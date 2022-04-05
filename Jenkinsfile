@@ -12,7 +12,9 @@ pipeline {
         }
         stage('Checking and fixing violations') { 
             steps {
-                echo 'Checking and fixing violations!'
+                sh 'sudo apt install python3-pip python3-dev'
+                sh 'pip3 install pylint'
+                sh 'pylint netman_netconf_obj2.py'
             }
         }
          stage('Running the application') {
