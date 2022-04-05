@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Running the application') {
             steps {
-                echo 'Hello World again'
+                sh 'python3 netman_netconf_obj2.py'
             }
         }
     }
