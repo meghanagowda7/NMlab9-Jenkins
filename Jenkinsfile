@@ -9,7 +9,8 @@ pipeline {
                 sh 'sudo apt-get install python-ipaddress'
                 sh 'sudo apt-get install python-prettytable'
             }
-         stage('Checking and fixing violations ') { 
+        }
+        stage('Checking and fixing violations') { 
             steps {
                 echo 'Checking and fixing violations'
             }
@@ -19,9 +20,9 @@ pipeline {
                 sh 'python3 netman_netconf_obj2.py'
             }
         }
-         stage('Checking and fixing violations ') { 
+         stage('Unit Test') { 
             steps {
-                echo 'Checking and fixing violations'
+                echo 'Unit Test'
             }
         }
     }
