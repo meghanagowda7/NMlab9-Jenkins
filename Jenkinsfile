@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Checking and fixing violations') { 
             steps {
-                echo 'Checking and fixing violations'
+                echo 'Checking and fixing violations!'
             }
         }
          stage('Running the application') {
