@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'node'
-            args '-u root'
-        }
-    }
+    agent any
 
     stages {
         stage('Update/Install packages in Netman VM') { 
