@@ -26,4 +26,14 @@ pipeline {
             }
         }
     }
+    post
+    {
+        success
+        {
+            emailext body: 'Build Successful, happy coding :)', subject: 'Build pipeline status', to: 'meghana.gowda@colorado.edu'
+        }
+        failure
+        {
+            emailext body: 'Build Failed, check code and try again', subject: 'Build pipeline status', to: 'meghana.gowda@colorado.edu'
+        }
 }
