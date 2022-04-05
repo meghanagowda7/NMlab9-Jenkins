@@ -14,7 +14,7 @@ pipeline {
             steps {
                 sh 'sudo apt install python3-pip python3-dev'
                 sh 'pip3 install pylint'
-                sh 'pylint netman_netconf_obj2.py'
+                sh 'pylint netman_netconf_obj2.py --fail-under=5'
             }
         }
          stage('Running the application') {
