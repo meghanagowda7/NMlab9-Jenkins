@@ -36,4 +36,5 @@ pipeline {
         {
             emailext body: 'Build Failed, check code and try again', subject: 'Build pipeline status', to: 'meghana.gowda@colorado.edu'
         }
+    }
 }
