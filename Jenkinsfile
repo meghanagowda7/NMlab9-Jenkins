@@ -6,15 +6,28 @@ pipeline {
         }
     }
     stages {
-        stage('Testing') {
+        stage('Package Update/Install') {
             steps {
+                echo 'Updating/Installing necessary packages...........'
                 sh 'apt-get update'
                 sh 'apt-get upgrade -y'
                 sh 'apt-get install -y python3-pip'
-                sh 'python3 -m pip install napalm'
-                sh 'python3 test.py'
+                sh 'python3 -m pip install ncclient'
             }
         }
+        stage('Violation Check') { 
+            steps {
+                echo 'Checking script violations...........'
+                sh 'python3 -m pip install pylint'
+                sh 'pylint static_yang_config.py --fail-under=5'
+                }
+            }
+        stage('Application Run') { 
+            steps {
+                echo 'Running application....' 
+                sh 'python3 static_yang_config.py''
+                }
+        }   
     }
     post
     {
