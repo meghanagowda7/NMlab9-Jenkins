@@ -25,7 +25,7 @@ pipeline {
         stage('Application Run') { 
             steps {
                 echo 'Running application....' 
-                sh 'python3 static_yang_config.py''
+                sh 'python3 static_yang_config.py'
                 }
         }   
     }
