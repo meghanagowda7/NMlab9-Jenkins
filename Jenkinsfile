@@ -1,30 +1,18 @@
 pipeline {
-    agent any
-
+    agent {
+        docker {
+            image 'node'
+            args '-u root'
+        }
+    }
     stages {
-        stage('Update/Install packages in Netman VM') { 
+        stage('Testing') {
             steps {
-                sh 'sudo apt-get install -y python-ncclient'
-                sh 'sudo apt install python3-pandas'
-                sh 'sudo apt-get install python-ipaddress'
-                sh 'sudo apt-get install python-prettytable'
-            }
-        }
-        stage('Checking and fixing violations') { 
-            steps {
-                sh 'sudo apt install python3-pip python3-dev'
-                sh 'pip3 install pylint'
-                sh 'pylint netman_netconf_obj2.py --fail-under=5'
-            }
-        }
-         stage('Running the application') {
-            steps {
-                sh 'python3 netman_netconf_obj2.py'
-            }
-        }
-         stage('Unit Test') { 
-            steps {
-                echo 'Unit Test!'
+                sh 'apt-get update'
+                sh 'apt-get upgrade -y'
+                sh 'apt-get install -y python3-pip'
+                sh 'python3 -m pip install napalm'
+                sh 'python3 test.py'
             }
         }
     }
