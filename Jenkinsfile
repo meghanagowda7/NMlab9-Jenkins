@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Violation Check') { 
             steps {
-                echo 'Checking script violations............'
+                echo 'Checking script violations.............'
                 sh 'python3 -m pip install pylint'
                 sh 'pylint static_yang_config.py --fail-under=5'
                 }
